@@ -1,2 +1,2 @@
-# ReactApp
+# FullStackApp
 SampleApp
