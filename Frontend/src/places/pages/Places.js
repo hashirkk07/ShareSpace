@@ -14,7 +14,7 @@ const SamplePlaces = [
       "Taj Mahl is an ivory-white marble mausoleum on the southern bank of the river Yamuna in the Indian city of Agra.",
     coordinates: {
       lat: "27.175228299392455",
-      long: "78.04227093895875",
+      lng: "78.04227093895875",
     },
     creator: "u1",
   },
@@ -28,7 +28,7 @@ const SamplePlaces = [
       "Taj Mahl is an ivory-white marble mausoleum on the southern bank of the river Yamuna in the Indian city of Agra.",
     coordinates: {
       lat: "27.175228299392455",
-      long: "78.04227093895875",
+      lng: "78.04227093895875",
     },
     creator: "u2",
   },
