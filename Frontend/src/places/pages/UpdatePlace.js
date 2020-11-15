@@ -7,6 +7,7 @@ import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH,
 } from "../../shared/util/validators";
+import { useForm } from "../../shared/hooks/form-hook";
 
 import "./NewPlace.css";
 
@@ -44,6 +45,25 @@ const UpdatePlace = () => {
   const placeID = useParams().pid;
   const place2update = SamplePlaces.find((place) => place.id === placeID);
 
+  const [formState, inputHandler] = useForm(
+    {
+      title: {
+        value: place2update.title,
+        isValid: true,
+      },
+      description: {
+        value: place2update.description,
+        isValid: true,
+      },
+    },
+    true
+  );
+
+  const updateSubmitHandler = (event) => {
+    event.preventDefault();
+    console.log(formState.inputs);
+  };
+
   if (!place2update) {
     return (
       <div className="center">
@@ -53,7 +73,7 @@ const UpdatePlace = () => {
   }
 
   return (
-    <form className="place-form">
+    <form className="place-form" onSubmit={updateSubmitHandler}>
       <Input
         element="input"
         id="title"
@@ -61,9 +81,9 @@ const UpdatePlace = () => {
         type="text"
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a valid title."
-        onInput={() => {}}
-        value={place2update.title}
-        valid={true}
+        onInput={inputHandler}
+        initValue={formState.inputs.title.value}
+        initValid={formState.inputs.title.isValid}
       />
       <Input
         element="textarea"
@@ -71,11 +91,11 @@ const UpdatePlace = () => {
         label="Description"
         validators={[VALIDATOR_MINLENGTH(5)]}
         errorText="Please enter a valid description of min character length 5."
-        onInput={() => {}}
-        value={place2update.description}
-        valid={true}
+        onInput={inputHandler}
+        initValue={formState.inputs.description.value}
+        initValid={formState.inputs.description.isValid}
       />
-      <Button type="submit" disabled={true}>
+      <Button type="submit" disabled={!formState.isValid}>
         UPDATE PLACE
       </Button>
     </form>
