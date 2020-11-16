@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/api/users", (req, res, next) => {
-  console.log("Intercepted GET to /api/users");
-
-  res.json({ message: "Status 200 OK" });
+router.get("/:userID", (req, res, next) => {
+  const userID = req.params.userID;
+  res.json({ user: userID });
 });
 
 module.exports = router;
