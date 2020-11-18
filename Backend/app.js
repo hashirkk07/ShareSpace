@@ -6,6 +6,8 @@ const usersRoute = require("./routes/usersRoute");
 
 const app = express();
 
+app.use(bodyParser.json());
+
 app.use("/api/places", placesRoute);
 app.use("/api/users", usersRoute);
 
